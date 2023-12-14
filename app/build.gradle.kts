@@ -70,6 +70,8 @@ dependencies {
     //navigation dependency
     implementation("androidx.navigation:navigation-compose:2.7.5")
     //view model dependency
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+
+    implementation ("androidx.appcompat:appcompat-resources:1.6.1")
 
 }
