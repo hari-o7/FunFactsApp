@@ -20,6 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.funfactsapp.R
 import com.example.funfactsapp.data.UserDataUiEvents
 import com.example.funfactsapp.ui.AnimalCard
+import com.example.funfactsapp.ui.ButtonComponent
 import com.example.funfactsapp.ui.TextComponent
 import com.example.funfactsapp.ui.TextFieldComponent
 import com.example.funfactsapp.ui.TopBar
@@ -36,15 +37,15 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
                 .fillMaxSize()
                 .padding(20.dp)
         ) {
-            TopBar("Hi there \uD83D\uDE0A")
+            TopBar("Hey you!")
             TextComponent(
-                value = "Let's learn about You!",
+                value = "Let's learn about you!",
                 textSize = 24.sp
             )
             Spacer(modifier = Modifier.size(20.dp))
 
             TextComponent(
-                value = "This app will prepare a details page based on your preferences",
+                value = "This app will prepare a details page based on your preferences.",
                 textSize = 20.sp
             )
 
@@ -57,7 +58,7 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
                 userInputViewModel.onEvent(UserDataUiEvents.UserNameEntered(it))
             })
 
-            Spacer(modifier = Modifier.size(10.dp))
+            Spacer(modifier = Modifier.size(20.dp))
             TextComponent(value = "Which is your favorite?", textSize = 18.sp)
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -67,11 +68,38 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
 
-                AnimalCard(image = R.drawable.cat1)
+                AnimalCard(
+                    image = R.drawable.cat1, animalSelected = {
+                        userInputViewModel.onEvent(
+                            UserDataUiEvents.AnimalSelected(it)
+                        )
+                    },
+                    selected = userInputViewModel.uiState.value.animalSelected == "Cat"
+                )
                 //Spacer(modifier = Modifier.weight(1f))
-                AnimalCard(image = R.drawable.dog)
+                AnimalCard(
+                    image = R.drawable.dog, animalSelected = {
+                        userInputViewModel.onEvent(
+                            UserDataUiEvents.AnimalSelected(it)
+                        )
+
+                    },
+                    selected = userInputViewModel.uiState.value.animalSelected == "Dog"
+                )
 
 
+            }
+
+            Spacer(modifier = Modifier.weight(1f))
+
+
+            if (userInputViewModel.isValidState()) {
+                ButtonComponent(
+                    goToDetailsScreen = {
+
+
+                    }
+                )
             }
 
 
