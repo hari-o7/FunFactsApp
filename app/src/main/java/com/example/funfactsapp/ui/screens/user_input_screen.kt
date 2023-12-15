@@ -27,7 +27,10 @@ import com.example.funfactsapp.ui.TopBar
 import com.example.funfactsapp.ui.UserInputViewModel
 
 @Composable
-fun UserInputScreen(userInputViewModel: UserInputViewModel) {
+fun UserInputScreen(
+    userInputViewModel: UserInputViewModel,
+    showWelcomeScreen: (valuesPair: Pair<String, String>) -> Unit
+) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -96,6 +99,14 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
             if (userInputViewModel.isValidState()) {
                 ButtonComponent(
                     goToDetailsScreen = {
+                        println("=====Coming Here")
+                        println("=====${userInputViewModel.uiState.value.nameEntered} && ${userInputViewModel.uiState.value.animalSelected}")
+                        showWelcomeScreen(
+                            Pair(
+                                userInputViewModel.uiState.value.nameEntered,
+                                userInputViewModel.uiState.value.animalSelected
+                            )
+                        )
 
 
                     }
@@ -108,8 +119,9 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
 
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewUserInputScreen() {
-    UserInputScreen(userInputViewModel = UserInputViewModel())
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewUserInputScreen() {
+//    UserInputScreen(userInputViewModel = UserInputViewModel(),
+//    )
+//}

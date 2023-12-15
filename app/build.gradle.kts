@@ -74,4 +74,8 @@ dependencies {
 
     implementation ("androidx.appcompat:appcompat-resources:1.6.1")
 
+    //splash screen
+    implementation ("androidx.core:core-splashscreen:1.0.1")
+
+
 }
