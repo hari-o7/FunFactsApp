@@ -35,6 +35,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -188,6 +189,7 @@ fun TextWithShadow(value: String) {
         text = value,
         fontSize = 24.sp,
         fontWeight = FontWeight.W400,
+        textAlign = TextAlign.Justify,
         style = TextStyle(
             shadow = Shadow(
                 color = Utils.generateRandomColor(),
@@ -218,9 +220,9 @@ fun FactComponent(value: String) {
                 contentDescription = null
             )
 
-            Spacer(modifier = Modifier.size(24.dp))
+            Spacer(modifier = Modifier.size(10.dp))
             TextWithShadow(value = value)
-            Spacer(modifier = Modifier.size(24.dp))
+            Spacer(modifier = Modifier.size(10.dp))
             Image(
                 painter = painterResource(id = R.drawable.quotation),
                 contentDescription = null,

@@ -20,13 +20,13 @@ fun NavigationFunFactsApp(userInputViewModel: UserInputViewModel = viewModel()) 
                 println("Coming inside Welcome Screen")
                 println(it.first)
                 println(it.second)
-                navController.navigate(Routes.WELCOME_SCREEN + "/${it.first}/${it.second}")
+                navController.navigate(route = Routes.WELCOME_SCREEN + "/${it.first}/${it.second}")
             })
         }
 
         composable(
-            route =
-            "${Routes.WELCOME_SCREEN}/${Routes.USER_NAME}/${Routes.ANIMAL_SELECTED}",
+           // route = "${Routes.WELCOME_SCREEN}/${Routes.USER_NAME}/${Routes.ANIMAL_SELECTED}",
+            route = "${Routes.WELCOME_SCREEN}/{${Routes.USER_NAME}}/{${Routes.ANIMAL_SELECTED}}",
             arguments = listOf(
                 navArgument(name = Routes.USER_NAME) { type = NavType.StringType },
                 navArgument(name = Routes.ANIMAL_SELECTED) { type = NavType.StringType }
