@@ -1,5 +1,9 @@
 # README.md
 
+<div align="center">
+  <img src="image1.jpg" alt="Image 1" width="400" />
+  <img src="image2.jpg" alt="Image 2" width="400" />
+</div>
 
 ## Events, State and ViewModel
 
